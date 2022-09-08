@@ -1,0 +1,25 @@
+
+<h1> hello Africa</h1>
+
+<form method='post'>
+    {%csrf_token%}
+    {{penit.as_p}}
+
+    <input type="submit">
+
+
+    {% for cha in choas reversed%}
+            
+        <li> 
+            {% if cha.completed == True %}
+
+            <strike>{{cha | title}}</strike>
+            {% else %}
+            {{cha | title}}
+            {%endif%}
+            <a href="{% url 'delete' cha.id%}">Delete</a> 
+            <a href="{%url 'update' cha.id %}">Update</a></li> 
+
+    {%endfor%}
+
+</form>
